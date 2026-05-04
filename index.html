@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gangorra Equilibrada - Mais Rápida</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #111;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .prancha {
+            width: 100%;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            position: relative;
+            transform-origin: center;
+            /* Tempo reduzido de 4s para 2.5s */
+            animation: balanco-logico 2.5s ease-in-out infinite;
+        }
+
+        .hexagono {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+            bottom: 10px; 
+            /* Tempo reduzido de 4s para 2.5s para manter a sincronia */
+            animation: movimento-logico 2.5s ease-in-out infinite;
+        }
+
+        @keyframes balanco-logico {
+            0%, 100% { transform: rotate(15deg); }
+            50% { transform: rotate(-15deg); }
+        }
+
+        @keyframes movimento-logico {
+            0%, 100% { 
+                left: 0; 
+                transform: rotate(0deg); 
+            }
+            50% { 
+                left: calc(100% - 60px); 
+                transform: rotate(360deg); 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="prancha">
+            <div class="hexagono"></div>
+        </div>
+    </div>
+
+</body>
+</html>
